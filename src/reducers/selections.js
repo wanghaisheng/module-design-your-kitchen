@@ -3,27 +3,26 @@ import { createSlice } from '@reduxjs/toolkit'
 export const selections = createSlice({
   name: 'selections',
   initialState: {
-    currentAnswer: '',
     answers: [],
-    pageShown: 'size',
-    selectionDone: false
+    selectionsDone: false
   },
   reducers: {
     addAnswer: (state, action) => {
-      state.answers = [...state.answers, action.payload]
+      const existingCategory = state.answers.find((answer) => answer.category === action.payload.category)
+      console.log(action.payload.category)
+
+      if (existingCategory) {
+        console.log('hej')
+        state.answers = state.answers.filter((answer) => answer.category !== action.payload.category)
+        state.answers = [...state.answers, action.payload]
+      } else {
+        state.answers = [...state.answers, action.payload]
+      }
+
       console.log(state.answers)
     },
-    removeLatestAnswer: (state, action) => {
-      state.answers = state.answers.pop()
-    },
-    setCurrentAnswer: (state, action) => {
-      state.currentAnswer = action.payload
-    },
-    setPageShown: (state, action) => {
-      state.pageShown = action.payload
-    },
-    setSelectionDone: (state, action) => {
-      state.selectionDone = action.payload
+    setSelectionsDone: (state, action) => {
+      state.selectionsDone = action.payload
     }
   }
 })
