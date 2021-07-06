@@ -7,18 +7,25 @@ import { selections } from '../reducers/selections'
 const AppFooter = styled.footer`
   width: 65%;
   background: transparent;
-  height: 5rem;
   position: fixed;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  //flex-direction: column;
+  //justify-content: space-between;
+  //align-items: center;
   color: #FFFFFF;
 `
 
-const Button = styled.button`
-  background: #9d8aa8;
-  width: 20%;
-  color: #FFFFFF;
+const TotalPrice = styled.div`
+  margin: 0 0 5rem 2.5rem;
+  height: 7rem;
+  p {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: normal;
+    &:nth-child(2) {
+      font-size: 1rem;
+    }
+  }
 `
 
 export const Footer = () => {
@@ -28,7 +35,10 @@ export const Footer = () => {
 
   return (
     <AppFooter>
-      <div>Price: {totalPrice} kr</div>
+      <TotalPrice>
+        <p>Price: {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} kr</p>
+        <p>Vad är inkluderat i priset?</p>
+      </TotalPrice>
     </AppFooter>
   )
 }

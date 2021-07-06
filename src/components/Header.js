@@ -16,11 +16,16 @@ const NavList = styled.ol`
   justify-content: space-between;
   width: 60%;
 `
+
+const Logo = styled.img`
+  width: 6rem;
+  padding: 1rem 0 0 1rem;
+`
 export const Header = () => {
   return (
     <AppHeader>
-      <div>logo</div>
-      <NavList>
+      <Logo src="https://res.cloudinary.com/dgg9enyjv/image/upload/v1521186960/Marbodal/logo/marbodal-logo-svg.svg" alt="" />
+      {/*<NavList>
         <li>
           <a href="#sum">test</a>
         </li>
@@ -36,7 +41,7 @@ export const Header = () => {
         <li>
           <a href="#sum">test</a>
         </li>
-      </NavList>
+      </NavList>*/}
     </AppHeader>
   )
 }

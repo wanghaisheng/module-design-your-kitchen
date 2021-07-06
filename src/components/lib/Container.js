@@ -35,6 +35,11 @@ const SelectionsWrapper = styled.div`
   width: 35%;
 `
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  width: 60%;
+`
+
 const NextButton = styled.button`
   border: none;
   cursor: pointer;
@@ -46,6 +51,7 @@ const NextButton = styled.button`
 export const Container = () => {
   const dispatch = useDispatch()
   const answerArray = useSelector((store) => store.selections.answers)
+  const nrOfSelections = answerArray.length
 
   const handleGoToNext = () => {
     dispatch(selections.actions.setSelectionsDone(true))
@@ -63,3 +69,9 @@ export const Container = () => {
     </ContentWrapper>
   )
 }
+
+
+/* <ButtonWrapper>
+<span>{nrOfSelections}/5</span>
+<NextButton disabled={answerArray.length > 5} onClick={handleGoToNext}>Next</NextButton>
+</ButtonWrapper> */
