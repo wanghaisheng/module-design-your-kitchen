@@ -82,10 +82,11 @@ const Button = styled.button`
 export const SelectionContent = ({ title, options }) => {
   const dispatch = useDispatch()
 
-  const handleSelection = (itemName, itemCategory) => {
+  const handleSelection = (itemName, itemCategory, itemPrice) => {
     dispatch(selections.actions.addAnswer({
       name: itemName,
-      category: itemCategory
+      category: itemCategory,
+      price: itemPrice
     }))
   }
 
@@ -97,7 +98,7 @@ export const SelectionContent = ({ title, options }) => {
       <Selections>
         {options.map((option) => (
           <li key={options.id}>
-            <Button type="Button" onClick={() => handleSelection(option.name, option.category)}>
+            <Button type="Button" onClick={() => handleSelection(option.name, option.category, option.price)}>
               <img src={option.img} alt="" />
               <h4>{option.name}</h4>
               <p>{option.price} kr</p>

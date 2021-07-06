@@ -34,14 +34,14 @@ export const frontOptions = [
     id: '5',
     name: 'Handleless',
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625479904/Ska%CC%88rmavbild_2021-07-05_kl._12.10.45_a1bm3y.png',
-    price: 6.513,
+    price: 6513,
     category: 'front'
   },
   {
     id: '6',
     name: 'Slab',
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625479904/Ska%CC%88rmavbild_2021-07-05_kl._12.10.57_iqbokn.png',
-    price: 5.754,
+    price: 5754,
     category: 'front'
   }
 ]

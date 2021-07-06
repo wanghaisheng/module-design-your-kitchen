@@ -48,7 +48,11 @@ const ShareResult = styled.div`
 `
 
 export const Summary = () => {
-  const finalAnswers = useSelector((store) => store.selections.answers)
+  const selectedProducts = useSelector((store) => store.selections.answers)
+
+  const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
+
+  const monthlyPayment = totalPrice / 36
 
   return (
     <SummaryWrapper>
@@ -56,10 +60,10 @@ export const Summary = () => {
       <SummaryContent>
         <Image src="https://res.cloudinary.com/dgg9enyjv/images/c_fill,ar_101:65,q_auto:best,w_1800/v1586159544/Marbodal/Gallery/Fager%C3%B6%20Tall/111918_marbodal-fagero-tall-gron-kokso/Temp" alt="" />
         <FinalAnswers>
-          {finalAnswers.map((answer, index) => (
+          {selectedProducts.map((product) => (
             <li>
               <h4>Category</h4>
-              <p>{answer.name}</p>
+              <p>{product.name}</p>
             </li>
           ))}
           <li>
@@ -68,8 +72,8 @@ export const Summary = () => {
           </li>
           <li>
             <TotalCost>
-              <p>42340 kr</p>
-              <span>513 kr/mån</span>
+              <p>{totalPrice} kr</p>
+              <span>{Math.ceil(monthlyPayment)} kr/mån</span>
             </TotalCost>
           </li>
         </FinalAnswers>

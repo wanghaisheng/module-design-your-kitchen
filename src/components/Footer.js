@@ -22,10 +22,13 @@ const Button = styled.button`
 `
 
 export const Footer = () => {
+  const selectedProducts = useSelector((store) => store.selections.answers)
+
+  const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
 
   return (
     <AppFooter>
-      <div>Price: price</div>
+      <div>Price: {totalPrice} kr</div>
     </AppFooter>
   )
 }
