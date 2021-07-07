@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import Fade from 'react-reveal'
 import styled from 'styled-components'
 
 import { selections } from '../../reducers/selections'
@@ -20,12 +21,14 @@ export const ImageWrapper = styled.div`
 `
 
 export const Image = styled.div`
-  background-image: url('https://res.cloudinary.com/dgg9enyjv/images/c_fill,ar_101:65,q_auto:best,w_1800/v1586159544/Marbodal/Gallery/Fager%C3%B6%20Tall/111918_marbodal-fagero-tall-gron-kokso/Temp');
+  background-image: url(${props => props.backgroundImage});
   background-repeat: no-repeat;
   background-position: center;
   width: 65%;
   height: 100%;
   position: fixed;
+  display: flex;
+  align-items: flex-end;
 `
 
 const SelectionsWrapper = styled.div`
@@ -35,23 +38,74 @@ const SelectionsWrapper = styled.div`
   width: 35%;
 `
 
+const TotalPrice = styled.div`
+  margin: 0 0 5rem 2.5rem;
+  height: 7rem;
+  color: #FFFFFF;
+  p {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: normal;
+    &:nth-child(2) {
+      font-size: 0.85rem;
+      text-decoration: underline;
+    }
+  }
+`
+
+const Price = styled.p`
+  opacity: 1;
+  transition: opacity 0.2;
+
+`
+
 const ButtonWrapper = styled.div`
   display: flex;
-  width: 60%;
+  justify-content: space-evenly;
+  align-items: baseline;
+  width: 80%;
+
+  span {
+    padding-left: 3rem; 
+  }
 `
 
 const NextButton = styled.button`
+  display: flex;
   border: none;
   cursor: pointer;
-  background: #9d8aa8;
-  width: 50%;
-  color: #FFFFFF;
+  color: #444444;
+  margin: 2rem 0;
+  padding: 1.125rem 3.625rem 1.125rem 1.25rem;
+  border: 1px solid rgba(164, 159, 158, 0.4);
+  border-radius: 0.375rem;
+  width: 65%;
+  font-size: 1rem;
+  line-height: 1.25;
+  background-image: url("https://res.cloudinary.com/dgg9enyjv/image/upload/v1614242944/Norema/Toniton/icons/right-arrow.svg");
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1.25rem) 50%;
+  background-size: 1.375rem 1rem;
+  -webkit-transition: background-color 0.325s ease, background-position 0.325s ease, border-color 0.325s ease;
+  transition: background-color 0.325s ease, background-position 0.325s ease, border-color 0.325s ease;
+  :hover {
+    background-position: calc(100% - 0.625rem) 50%;
+  }
+  :disabled {
+    color: rgba(68,68,68, 0.2);
+    :hover{
+      background-position: calc(100% - 1.25rem) 50%;
+    }
+  }
 `
 
 export const Container = () => {
   const dispatch = useDispatch()
-  const answerArray = useSelector((store) => store.selections.answers)
-  const nrOfSelections = answerArray.length
+  const backgroundImage = useSelector((store) => store.selections.currentBackgroundImg)
+  const selectedProducts = useSelector((store) => store.selections.answers)
+  const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
+  const selectionsDone = selectedProducts.length
 
   const handleGoToNext = () => {
     dispatch(selections.actions.setSelectionsDone(true))
@@ -60,18 +114,20 @@ export const Container = () => {
   return (
     <ContentWrapper>
       <ImageWrapper>
-        <Image />
+        <Image backgroundImage={backgroundImage}>
+          <TotalPrice>
+            <Price>Price: {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} kr</Price>
+            <p>Vad är inkluderat i priset?</p>
+          </TotalPrice>
+        </Image>
       </ImageWrapper>
       <SelectionsWrapper>
         <Selections />
-        <NextButton disabled={answerArray.length > 5} onClick={handleGoToNext}>Next</NextButton>
+        <ButtonWrapper>
+          <span>{selectionsDone}/5</span>
+          <NextButton disabled={selectedProducts.length < 5} onClick={handleGoToNext}>Next</NextButton>
+        </ButtonWrapper>
       </SelectionsWrapper>
     </ContentWrapper>
   )
 }
-
-
-/* <ButtonWrapper>
-<span>{nrOfSelections}/5</span>
-<NextButton disabled={answerArray.length > 5} onClick={handleGoToNext}>Next</NextButton>
-</ButtonWrapper> */

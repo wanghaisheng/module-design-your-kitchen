@@ -5,7 +5,8 @@ export const selections = createSlice({
   initialState: {
     answers: [],
     selectionsDone: false,
-    totalPrice: 0
+    totalPrice: 0,
+    currentBackgroundImg: 'https://res.cloudinary.com/dgg9enyjv/images/c_fill,ar_101:65,q_auto:best,w_1800/v1586159544/Marbodal/Gallery/Fager%C3%B6%20Tall/111918_marbodal-fagero-tall-gron-kokso/Temp'
   },
   reducers: {
     addAnswer: (state, action) => {
@@ -20,6 +21,9 @@ export const selections = createSlice({
     },
     setSelectionsDone: (state, action) => {
       state.selectionsDone = action.payload
+    },
+    setBackgroundImage: (state, action) => {
+      state.currentBackgroundImg = action.payload
     }
   }
 })

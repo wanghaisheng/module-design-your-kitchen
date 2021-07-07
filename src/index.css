@@ -1,3 +1,9 @@
+@font-face {
+  font-weight: normal;
+  font-family: "Ginger";
+  src: url("https://res.cloudinary.com/dgg9enyjv/raw/upload/v1517572141/Marbodal/fonts/ginger/F37Ginger-Regular.ttf") format("truetype");
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,6 +11,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  color: #444444;
 }
 
 code {
@@ -12,10 +20,16 @@ code {
     monospace;
 }
 
+* {
+  font-family: "Ginger";
+} 
+
 .active {
-  border: 1px solid lightgrey;
+  border: 1px solid rgb(165, 116, 116);
   border-radius: 0.2rem;
+  padding: 0;
 }
+
 
 button > * {
   pointer-events: none;

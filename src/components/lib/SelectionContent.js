@@ -1,36 +1,21 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import Fade from 'react-reveal'
 import styled from 'styled-components'
 
 import { selections } from 'reducers/selections'
 
 const SelectionsContainer = styled.div`
-  width: 100%;
   background: #FFFFFF;
-  margin: 0.125rem 0 2rem 2rem;
-`
-
-export const ImageWrapper = styled.div`
-  width: 65%;
-  height: 100%;
-  margin: 0;
-`
-
-export const Image = styled.div`
-  background-image: url('https://res.cloudinary.com/dgg9enyjv/images/c_fill,ar_101:65,q_auto:best,w_1800/v1586159544/Marbodal/Gallery/Fager%C3%B6%20Tall/111918_marbodal-fagero-tall-gron-kokso/Temp');
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 65%;
-  height: 100%;
-  position: fixed;
+  margin: 1rem 0 1rem 2rem;
 `
 
 const SelectionCopy = styled.div`
   background: #FFFFFF;
-  padding-top: 4rem;
 
   h2 {
     text-align: center;
+    font-weight: 400; 
   }
 `
 const Selections = styled.ul`
@@ -39,16 +24,24 @@ const Selections = styled.ul`
   flex-wrap: wrap;
   justify-content: space-between;
   width: 80%;
-  padding: 0 0 5rem 0;
+  padding: 0;
   margin: 2rem auto;
   li {
     box-sizing: border-box;
     overflow: hidden;
     width: 33%;
+    transform: border padding .5s;
+    padding: 1px;
+
+    &:hover {
+      border: 1px solid lightgrey;
+      border-radius: 0.2rem;
+      padding: 0;
+    }
 
     img {
       width: 100%;
-      height: 6rem;
+      min-height: 6rem;
       object-fit: contain;
       padding-top: 0.5rem;
     }
@@ -80,35 +73,46 @@ const Button = styled.button`
 
 export const SelectionContent = ({ title, options }) => {
   const dispatch = useDispatch()
-  const [active, setActive] = useState()
+  const [active, setActive] = useState('')
 
-  const handleSelection = (itemName, itemCategory, itemPrice, id) => {
+  const handleSelection = (item, id) => {
     dispatch(selections.actions.addAnswer({
-      name: itemName,
-      category: itemCategory,
-      price: itemPrice
+      name: item.name,
+      category: item.category,
+      price: item.price
     }))
+    /*dispatch(selections.actions.setBackgroundImage(item.url))*/
     setActive(id)
   }
-  console.log(active)
+
   return (
     <SelectionsContainer>
-      <SelectionCopy>
-        <h2>{title}</h2>
-      </SelectionCopy>
+      <Fade bottom>
+        <SelectionCopy>
+          <h2>{title}</h2>
+        </SelectionCopy>
+      </Fade>
       <Selections>
         {options.map((option) => (
-          <li key={option.id} className={active === option.id ? 'active' : undefined}>
-            <Button 
-              type="Button"
-              id={option.id}
-              className="active"
-              onClick={(event) => handleSelection(option.name, option.category, option.price, event.target.id)}>
-              <img src={option.img} alt=""/>
-              <h4>{option.name}</h4>
-              <p>{option.price} kr</p>
-            </Button>
-          </li>
+          <Fade bottom>
+            <li
+              key={option.id}
+              className={active === option.id ? 'active' : undefined}
+              active={active}>
+              <Button
+                type="Button"
+                id={option.id}
+                className="active"
+                onClick={(event) => handleSelection(option, event.target.id)}>
+                <img src={option.img} alt="" />
+                <h4>{option.name}</h4>
+                <p>
+                  {option.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                  {option.category === 'Handles' ? ' kr/st' : ' kr'}
+                </p>
+              </Button>
+            </li>
+          </Fade>
         ))}
       </Selections>
     </SelectionsContainer>
