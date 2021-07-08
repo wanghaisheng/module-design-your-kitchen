@@ -32,6 +32,14 @@ code {
   padding: 0;
 }
 
+.transparent {
+  opacity: 0;
+}
+
+.visible {
+  opacity: 1;
+}
+
 button > * {
   pointer-events: none;
 }

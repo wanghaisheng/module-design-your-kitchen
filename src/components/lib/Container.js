@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
@@ -30,6 +30,11 @@ export const Image = styled.img`
   display: flex;
   align-items: flex-end;
   object-fit: cover;
+  transition: opacity 1s ease-in-out;
+`
+
+const ImageChange = styled(Image)`
+  transition: opacity ease 1;
 `
 
 const SelectionsWrapper = styled.div`
@@ -106,6 +111,8 @@ const NextButton = styled.button`
 export const Container = () => {
   const dispatch = useDispatch()
   const backgroundImage = useSelector((store) => store.selections.currentBackgroundImg)
+  const secondBackgroundImage = useSelector((store) => store.selections.secondBackgroundImg)
+  const imageChange = useSelector((store) => store.selections.backgroundImgChange)
   const selectedProducts = useSelector((store) => store.selections.answers)
   const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
   /*const selectionsDone = selectedProducts.length*/
@@ -117,7 +124,9 @@ export const Container = () => {
   return (
     <ContentWrapper>
       <ImageWrapper>
-        <Image src={backgroundImage} />
+        <ImageChange src={secondBackgroundImage} className={imageChange ? undefined : 'transparent'} />
+        <Image src={backgroundImage} className={imageChange ? 'transparent' : undefined} />
+
         <TotalPrice>
           <Price>{totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} kr</Price>
           <p>Vad är inkluderat i priset?</p>

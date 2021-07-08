@@ -117,6 +117,7 @@ export const SelectionContent = ({ title, options }) => {
       price: item.price
     }))
     dispatch(selections.actions.setBackgroundImage(item.backgroundImage))
+    dispatch(selections.actions.setImgChange())
     setActive(id)
   }
 

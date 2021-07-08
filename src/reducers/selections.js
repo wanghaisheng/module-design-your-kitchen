@@ -18,7 +18,9 @@ export const selections = createSlice({
     taps: {},
     selectionsDone: false,
     totalPrice: 0,
-    currentBackgroundImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg'
+    currentBackgroundImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg',
+    secondBackgroundImg: '',
+    backgroundImgChange: false
   },
   reducers: {
     addAnswer: (state, action) => {
@@ -55,7 +57,15 @@ export const selections = createSlice({
       state.selectionsDone = action.payload
     },
     setBackgroundImage: (state, action) => {
-      state.currentBackgroundImg = action.payload
+      if (state.backgroundImgChange) {
+        state.currentBackgroundImg = action.payload
+      } else if (!state.backgroundImgChange) {
+        state.secondBackgroundImg = action.payload
+      }
+    },
+    setImgChange: (state, action) => {
+      state.backgroundImgChange = !state.backgroundImgChange
+      console.log(state.backgroundImgChange)
     }
   }
 })
