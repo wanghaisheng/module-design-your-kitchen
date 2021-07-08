@@ -34,7 +34,7 @@ const MarbodalLogo = styled.img`
 `
 
 const CloseLogo = styled.img`
-  width: 1.5rem;
+  width: 2.2rem;
   padding: 0 1rem 0 0;
   cursor: pointer;
 `

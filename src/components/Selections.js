@@ -19,7 +19,7 @@ export const Selections = () => {
         title="Front"
         options={frontOptions} />
       <SelectionContent
-        title="Worktop"
+        title="Worktops"
         options={worktopOptions} />
       <SelectionContent
         title="Handles"

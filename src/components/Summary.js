@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import Fade from 'react-reveal'
 import styled from 'styled-components'
@@ -10,25 +10,40 @@ const SummaryWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 80vh;
-  width: 80%;
+  width: 100%;
   padding-top: 7rem;
 
   h2, h3 {
-  font-size: 2rem;
-  font-weight: 400;
-}
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  h2 {
+    width: 100%;
+    margin-left: 1rem;
+  }
 `
 
 const SummaryContent = styled.div`
   display: flex;
-  justify-content: center;
-  width: 85%;
+  flex-direction: column;
+  width: 100%;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+  }
 `
 
 const FinalAnswers = styled.ol`
   list-style-type: none;
   padding: 2rem 0 0 2.5rem;
   margin-top: 0;
+  padding: 2rem 1rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem 0 0 2.5rem;
+  }
+
   li {
     display: flex;
     align-items: baseline;
@@ -56,25 +71,39 @@ const TotalCost = styled.div`
   }
 `
 const Image = styled.img`
-  width: 60%;
   min-height: 50vh;
+  width: 100%;
   object-fit: cover;
+  @media (min-width: 768px) {
+    width: 60%;
+  }
 `
 
 const ShareResult = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 3rem 0 0 0;
+  margin: 2rem 0 0 0;
+  padding: 0 1rem 5.5em 1rem;
+
+  @media (min-width: 768px) {
+    margin: 3rem 0 0 0;
+  }
+
   h3 {
     margin-bottom: 0;
+    text-align: center;
   }
 `
 
 const NextStepContainer = styled.ul`
   list-style-type: none;
   display: flex;
+  flex-direction: column;
   padding: 0;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `
 
 export const Summary = () => {
@@ -83,6 +112,10 @@ export const Summary = () => {
   const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
 
   const monthlyPayment = totalPrice / 36
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
 
   return (
     <SummaryWrapper>

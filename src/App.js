@@ -18,7 +18,6 @@ store.subscribe(() => {
 })
 
 export const App = () => {
-
   return (
     <Provider store={store}>
       <Home />

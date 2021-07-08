@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Container } from './components/lib/Container'
 import { Summary } from './components/Summary'
 import { Header } from './components/Header'
+import { Footer } from './components/Footer'
 
 const MainContainer = styled.main`
   width: 100%;
@@ -24,6 +25,7 @@ export const Home = () => {
           ? <Container />
           : <Summary />}
       </MainContainer>
+      <Footer />
     </>
   )
 }

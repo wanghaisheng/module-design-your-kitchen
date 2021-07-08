@@ -2,21 +2,23 @@ export const sizeOptions = [
   {
     id: '1',
     name: 'Small',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625479086/Ska%CC%88rmavbild_2021-07-05_kl._11.56.28_cfe09i.png',
+    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg',
     price: 10000,
-    category: 'Size'
+    category: 'Size',
+    backgroundImage: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg'
   },
   {
     id: '2',
     name: 'Medium',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625479086/Ska%CC%88rmavbild_2021-07-05_kl._11.56.36_ktkye7.png',
+    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745583/platsbyggt-elegant-lantkok_jsqf4v_a3rv68.jpg',
     price: 20000,
-    category: 'Size'
+    category: 'Size',
+    backgroundImage: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745583/platsbyggt-elegant-lantkok_jsqf4v_a3rv68.jpg'
   },
   {
     id: '3',
     name: 'Large',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625479086/Ska%CC%88rmavbild_2021-07-05_kl._11.56.42_rqowig.png',
+    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745721/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4_iwjwdo.jpg',
     price: 30000,
     category: 'Size'
   }
@@ -152,7 +154,7 @@ export const handleOptions = [
   {
     id: '21',
     name: 'Skinnflärp Ljus',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487256/Ska%CC%88rmavbild_2021-07-05_kl._14.13.33_nehjt0.png',
+    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625746606/9698a179-21af-4c9c-a5e0-fc3ad881a12c_comkk4.jpg',
     price: 125,
     category: 'Handles'
   },

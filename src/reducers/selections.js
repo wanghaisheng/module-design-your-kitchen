@@ -1,12 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { 
+  sizeOptions,
+  frontOptions,
+  worktopOptions,
+  handleOptions,
+  tapsOptions
+} from '../data'
 
 export const selections = createSlice({
   name: 'selections',
   initialState: {
-    answers: [],
+    answers: [sizeOptions[0], frontOptions[0], worktopOptions[0], handleOptions[0], tapsOptions[0]],
+    size: {},
+    front: {},
+    worktop: {},
+    handles: {},
+    taps: {},
     selectionsDone: false,
     totalPrice: 0,
-    currentBackgroundImg: 'https://res.cloudinary.com/dgg9enyjv/images/c_fill,ar_101:65,q_auto:best,w_1800/v1586159544/Marbodal/Gallery/Fager%C3%B6%20Tall/111918_marbodal-fagero-tall-gron-kokso/Temp'
+    currentBackgroundImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg'
   },
   reducers: {
     addAnswer: (state, action) => {
@@ -17,6 +29,26 @@ export const selections = createSlice({
         state.answers = [...state.answers, action.payload]
       } else {
         state.answers = [...state.answers, action.payload]
+      }
+
+      switch (action.payload.category) {
+        case 'Size':
+          state.size = action.payload
+          break
+        case 'Front':
+          state.front = action.payload
+          break
+        case 'Worktops':
+          state.worktop = action.payload
+          break
+        case 'Handles':
+          state.handles = action.payload
+          break
+        case 'Taps':
+          state.taps = action.payload
+          break
+        default:
+          console.log('test')
       }
     },
     setSelectionsDone: (state, action) => {
