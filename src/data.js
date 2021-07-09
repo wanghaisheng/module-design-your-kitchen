@@ -1,26 +1,33 @@
 export const sizeOptions = [
   {
     id: '1',
-    name: 'Small',
+    name: 'Träkök',
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg',
     price: 10000,
     category: 'Size',
+    kitchenType: 'Österlen',
+    colorSwatch: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486425/Ska%CC%88rmavbild_2021-07-05_kl._13.56.12_a1mlwc.png',
     backgroundImage: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg'
   },
   {
     id: '2',
-    name: 'Medium',
+    name: 'Shakerkök',
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745583/platsbyggt-elegant-lantkok_jsqf4v_a3rv68.jpg',
     price: 20000,
     category: 'Size',
-    backgroundImage: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745583/platsbyggt-elegant-lantkok_jsqf4v_a3rv68.jpg'
+    kitchenType: 'Ingarö',
+    colorSwatch: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486426/Ska%CC%88rmavbild_2021-07-05_kl._13.55.36_zsindr.png',
+    backgroundImage: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg'
   },
   {
     id: '3',
-    name: 'Large',
+    name: 'Slätt kök',
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745721/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4_iwjwdo.jpg',
     price: 30000,
-    category: 'Size'
+    category: 'Size',
+    kitchenType: 'Öland',
+    colorSwatch: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486425/Ska%CC%88rmavbild_2021-07-05_kl._13.55.55_fgmnou.png',
+    backgroundImage: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
   }
 ]
 
@@ -31,7 +38,7 @@ export const frontOptions = [
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625479904/Ska%CC%88rmavbild_2021-07-05_kl._12.10.38_s2boxf.png',
     price: 5944,
     category: 'Front',
-    url: 'https://res.cloudinary.com/dgg9enyjv/images/c_fill,ar_101:65,q_auto:best,w_1800/v1586252644/Marbodal/Gallery/Fr%C3%B6:%20Greiga%20k%C3%B6k/marbodal-fagero-fro/Fr%C3%B6_-_Greiga_k%C3%B6k'
+    backgroundImage: 'https://res.cloudinary.com/dgg9enyjv/images/c_fill,ar_101:65,q_auto:best,w_1800/v1586252644/Marbodal/Gallery/Fr%C3%B6:%20Greiga%20k%C3%B6k/marbodal-fagero-fro/Fr%C3%B6_-_Greiga_k%C3%B6k'
   },
   {
     id: '5',

@@ -20,6 +20,8 @@ export const selections = createSlice({
     totalPrice: 0,
     currentBackgroundImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg',
     secondBackgroundImg: '',
+    currentMobileImg: '',
+    secondMobileImg: '',
     backgroundImgChange: false
   },
   reducers: {
@@ -61,6 +63,13 @@ export const selections = createSlice({
         state.currentBackgroundImg = action.payload
       } else if (!state.backgroundImgChange) {
         state.secondBackgroundImg = action.payload
+      }
+    },
+    setMobileImage: (state, action) => {
+      if (state.backgroundImgChange) {
+        state.currentMobileImg = action.payload
+      } else if (!state.backgroundImgChange) {
+        state.secondMobileImg = action.payload
       }
     },
     setImgChange: (state, action) => {

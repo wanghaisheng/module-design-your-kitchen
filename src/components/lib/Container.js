@@ -30,11 +30,17 @@ export const Image = styled.img`
   display: flex;
   align-items: flex-end;
   object-fit: cover;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 0.8s ease;
+  -webkit-transition: opacity 0.8s ease;
+  -moz-transition: opacity 0.8s ease;
+  -o-transition: opacity 0.8s ease;
 `
 
 const ImageChange = styled(Image)`
-  transition: opacity ease 1;
+  transition: opacity 0.8s ease ;
+  -webkit-transition: opacity 0.8s ease;
+  -moz-transition: opacity 0.8s ease;
+  -o-transition: opacity 0.8s ease;
 `
 
 const SelectionsWrapper = styled.div`
@@ -71,13 +77,6 @@ const Price = styled.p`
 
 `
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: baseline;
-  width: 100%;
-`
-
 const NextButton = styled.button`
   display: flex;
   border: none;
@@ -106,6 +105,16 @@ const NextButton = styled.button`
       background-position: calc(100% - 1.25rem) 50%;
     }
   }
+
+  @media (min-width: 1200px) {
+    align-self: flex-start;
+    width: 50%;
+    margin-left: 1.5rem;
+  }
+
+  @media (min-width: 1440px) {
+    margin-left: 2.2rem;
+  }
 `
 
 export const Container = () => {
@@ -115,7 +124,6 @@ export const Container = () => {
   const imageChange = useSelector((store) => store.selections.backgroundImgChange)
   const selectedProducts = useSelector((store) => store.selections.answers)
   const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
-  /*const selectionsDone = selectedProducts.length*/
 
   const handleGoToNext = () => {
     dispatch(selections.actions.setSelectionsDone(true))
@@ -134,7 +142,7 @@ export const Container = () => {
       </ImageWrapper>
       <SelectionsWrapper>
         <Selections />
-        <NextButton onClick={handleGoToNext}>Next</NextButton>
+        <NextButton onClick={handleGoToNext}>Nästa</NextButton>
       </SelectionsWrapper>
     </ContentWrapper>
   )
