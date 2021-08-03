@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Fade from 'react-reveal'
 import styled from 'styled-components'
@@ -178,8 +178,7 @@ export const SelectionContent = ({ title, options }) => {
   const [active, setActive] = useState('')
   const selectedProducts = useSelector((store) => store.selections.answers) 
   const selectedProduct = selectedProducts.find((product) => product.category === title)
-  const backgroundImage = useSelector((store) => store.selections.currentMobileImg)
-  const secondBackgroundImage = useSelector((store) => store.selections.secondMobileImg)
+  const selectedKitchen = useSelector((store) => store.selections.size.name)
   const imageChange = useSelector((store) => store.selections.backgroundImgChange)
 
   const handleSelection = (item, id) => {
@@ -189,15 +188,16 @@ export const SelectionContent = ({ title, options }) => {
       price: item.price
     }))
     dispatch(selections.actions.setBackgroundImage(item.backgroundImage))
-    dispatch(selections.actions.setMobileImage(item.backgroundImage))
+    dispatch(selections.actions.findMobileImg({
+      category: item.category,
+      images: item.backgroundImageMobile
+    }))
     dispatch(selections.actions.setImgChange())
     setActive(id)
   }
 
   return (
     <SelectionsContainer>
-      <SecondKitchenImage src={secondBackgroundImage} className={imageChange ? undefined : 'transparent'} />
-      <KitchenImage src={backgroundImage !== '' ? backgroundImage : selectedProduct.backgroundImage} className={imageChange ? 'transparent' : undefined} />
       <Fade bottom>
         {title === 'Size' ? 
           <KitchenTypeCopy>
@@ -207,8 +207,8 @@ export const SelectionContent = ({ title, options }) => {
             <h2>{title}</h2>
             <h4>{selectedProduct.name}</h4>
             <p>
-              {selectedProduct.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
-              {selectedProduct.category === 'Handles' ? ' kr/st' : ' kr'}
+              {selectedProduct.category === 'Handles' ? selectedProduct.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') * 8 : selectedProduct.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+              {selectedProduct.category === 'Handles' ? ' kr (8st)' : ' kr'}
             </p>
           </SelectionCopy>}
       </Fade>
@@ -233,7 +233,7 @@ export const SelectionContent = ({ title, options }) => {
                       {option.kitchenType}
                     </p>
                     <ColorSwatch colorSwatch={option.colorSwatch} />
-                    <p><span>-</span>text</p>
+                    <p><span>-</span>{option.color}</p>
                   </div>
                 </>}
               </Button>

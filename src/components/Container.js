@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
-import { selections } from '../../reducers/selections'
-import { Selections } from '../Selections'
+import { selections } from '../reducers/selections'
+import { Selections } from './Selections'
 
 export const ContentWrapper = styled.div`
   display: flex;

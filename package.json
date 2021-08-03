@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@react-spring/parallax": "^9.2.3",
-    "@react-spring/web": "^9.2.3",
     "@reduxjs/toolkit": "^1.6.0",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.7.1",

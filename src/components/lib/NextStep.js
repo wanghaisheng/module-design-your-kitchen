@@ -8,6 +8,7 @@ const NextStepItem = styled.li`
   margin: 1.2rem 0.5rem;
 
   a {
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,6 +16,9 @@ const NextStepItem = styled.li`
     border-radius: 3px;
     padding: 1.2rem;
     cursor: pointer;
+    :visited {
+      color: inherit;
+    }
   }
 
   h4 {

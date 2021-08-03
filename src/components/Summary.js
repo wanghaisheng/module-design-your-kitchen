@@ -75,6 +75,7 @@ const Image = styled.img`
   width: 100%;
   object-fit: cover;
   @media (min-width: 768px) {
+    height: 60vh;
     width: 60%;
   }
 `
@@ -107,8 +108,11 @@ const NextStepContainer = styled.ul`
 `
 
 export const Summary = () => {
+  const imageChange = useSelector((store) => store.selections.backgroundImgChange)
+  const currentImage = useSelector((store) => store.selections.currentBackgroundImg)
+  const secondBackgroundImage = useSelector((store) => store.selections.secondBackgroundImage)
   const selectedProducts = useSelector((store) => store.selections.answers)
-
+  console.log(currentImage, secondBackgroundImage, imageChange)
   const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
 
   const monthlyPayment = totalPrice / 36
@@ -121,7 +125,7 @@ export const Summary = () => {
     <SummaryWrapper>
       <Fade bottom>
         <SummaryContent>
-          <Image src="https://res.cloudinary.com/dgg9enyjv/images/c_fill,ar_101:65,q_auto:best,w_1800/v1586159544/Marbodal/Gallery/Fager%C3%B6%20Tall/111918_marbodal-fagero-tall-gron-kokso/Temp" alt="" />
+          <Image src={imageChange ? currentImage : secondBackgroundImage} alt="" />
           <FinalAnswers>
             {selectedProducts.map((product) => (
               <li key={product.name}>
@@ -149,7 +153,10 @@ export const Summary = () => {
           <NextStepContainer>
             <NextStep title="Get a free 3D drawing" text="A kitchen designer will create a drawing and send it to you" />
             <NextStep title="Continue in 3D tool" text="Be creative on your own, draw doors, windows and plumbing" />
-            <NextStep title="Book an online meeting" text="Get help from a kitchen expert to finalize your kitchen design" />
+            <NextStep
+              url="https://www.marbodal.se/boka-mote/" 
+              title="Book an online meeting"
+              text="Get help from a kitchen expert to finalize your kitchen design" />
           </NextStepContainer>
         </ShareResult>
       </Fade>

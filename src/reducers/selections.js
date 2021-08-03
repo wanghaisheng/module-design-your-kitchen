@@ -12,16 +12,18 @@ export const selections = createSlice({
   initialState: {
     answers: [sizeOptions[0], frontOptions[0], worktopOptions[0], handleOptions[0], tapsOptions[0]],
     size: {},
-    front: {},
-    worktop: {},
-    handles: {},
-    taps: {},
+    sizeImg: {},
+    frontImg: {},
+    worktopImg: {},
+    handlesImg: {},
+    tapsImg: {},
     selectionsDone: false,
     totalPrice: 0,
     currentBackgroundImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg',
     secondBackgroundImg: '',
     currentMobileImg: '',
     secondMobileImg: '',
+    mobileImg: '',
     backgroundImgChange: false
   },
   reducers: {
@@ -35,24 +37,8 @@ export const selections = createSlice({
         state.answers = [...state.answers, action.payload]
       }
 
-      switch (action.payload.category) {
-        case 'Size':
-          state.size = action.payload
-          break
-        case 'Front':
-          state.front = action.payload
-          break
-        case 'Worktops':
-          state.worktop = action.payload
-          break
-        case 'Handles':
-          state.handles = action.payload
-          break
-        case 'Taps':
-          state.taps = action.payload
-          break
-        default:
-          console.log('test')
+      if (action.payload.category === 'Size') {
+        state.size = action.payload
       }
     },
     setSelectionsDone: (state, action) => {
@@ -71,10 +57,46 @@ export const selections = createSlice({
       } else if (!state.backgroundImgChange) {
         state.secondMobileImg = action.payload
       }
+      console.log('current', state.currentMobileImg)
+      console.log('second', state.secondMobileImg)
     },
     setImgChange: (state, action) => {
       state.backgroundImgChange = !state.backgroundImgChange
       console.log(state.backgroundImgChange)
+    },
+    findMobileImg: (state, action)  => {
+      const images = action.payload.images
+      const category = action.payload.category
+      let activeImage = ''
+
+      if (state.size.name === 'Träkök') {
+        activeImage = images[0]
+      } else if (state.size.name === 'Shakerkök') {
+        activeImage = images[1]
+      } else {
+        activeImage = images[2]
+      }
+
+      switch (action.payload.category) {
+        case 'Size':
+          state.sizeImg = activeImage
+          break
+        case 'Front':
+          state.frontImg = activeImage
+          break
+        case 'Worktops':
+          state.worktopImg = activeImage
+          break
+        case 'Handles':
+          state.handlesImg = activeImage
+          break
+        case 'Taps':
+          state.tapsImg = activeImage
+          break
+        default:
+          console.log('test')
+      }
+      console.log(state.mobileImg)
     }
   }
 })

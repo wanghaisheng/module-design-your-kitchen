@@ -10,3 +10,4 @@ export const breakpoints = {
   xxl: '1680px',
   xxxl: '1920px'
 }
+

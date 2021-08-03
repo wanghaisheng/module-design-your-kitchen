@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
-import { Container } from './components/lib/Container'
+import { Container } from './components/Container'
 import { Summary } from './components/Summary'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
