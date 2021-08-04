@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Fade from 'react-reveal'
 import styled from 'styled-components'
 
 import { selections } from 'reducers/selections'
+import { Product } from '../Product'
 
 export const SelectionsContainer = styled.div`
   position: relative;
@@ -50,29 +51,6 @@ const SelectionCopy = styled.div`
   }
 `
 
-const KitchenImage = styled.img`
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 40vh;
-  object-fit: cover;
-  transition: opacity 0.8s ease ;
-  -webkit-transition: opacity 0.8s ease;
-  -moz-transition: opacity 0.8s ease;
-  -o-transition: opacity 0.8s ease;
-
-  @media (min-width: 768px) {
-    display: none;
-  }
-`
-
-const SecondKitchenImage = styled(KitchenImage)`
-    transition: opacity 0.8s ease ;
-  -webkit-transition: opacity 0.8s ease;
-  -moz-transition: opacity 0.8s ease;
-  -o-transition: opacity 0.8s ease;
-`
-
 const KitchenTypeCopy = styled(SelectionCopy)`
   margin-left: 0;
   h2 {
@@ -105,7 +83,7 @@ export const Selections = styled.ul`
     }
 
     span {
-      
+      padding: 0 0.2rem;
     }
   }
 
@@ -136,12 +114,13 @@ export const Selections = styled.ul`
     width: ${({ title }) => (title === 'Size' ? '45%' : '28%')};
     transform: border padding .5s;
     padding: 1px;
+    margin: 1rem 0;
 
-    &:hover {
+    /*&:hover {
       border: 1px solid lightgrey;
       border-radius: 0.2rem;
       padding: 0;
-    }
+    }*/
 
     img {
       width: 100%;
@@ -152,40 +131,23 @@ export const Selections = styled.ul`
   }
 `
 
-const Button = styled.button`
-  border: none;
-  cursor: pointer;
-  margin: 0;
-  background: transparent;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-`
-
-const ColorSwatch = styled.span`
-  display: none;
-  margin: 0 auto 1rem;
-  background-image: url(${({ colorSwatch }) => (colorSwatch)});
-  height: 1.2rem;
-  width: 1.2rem;
-  border-radius: 50%;
-  @media (min-width: 768px) {
-    display: block;
-  }
-`
-
-export const SelectionContent = ({ title, options }) => {
+export const SelectionContent = ({ title, products }) => {
   const dispatch = useDispatch()
-  const [active, setActive] = useState('')
   const selectedProducts = useSelector((store) => store.selections.answers) 
   const selectedProduct = selectedProducts.find((product) => product.category === title)
-  const selectedKitchen = useSelector((store) => store.selections.size.name)
-  const imageChange = useSelector((store) => store.selections.backgroundImgChange)
+  const [active, setActive] = useState(selectedProduct.id)
+  const [mobileImgChange, setMobileImgChange] = useState(false)
+  let handlePrice = 0
+  if (selectedProduct.category === 'Handtag & knoppar') {
+    handlePrice = selectedProduct.price * 8
+  }
 
   const handleSelection = (item, id) => {
     dispatch(selections.actions.addAnswer({
       name: item.name,
       category: item.category,
-      price: item.price
+      price: item.price,
+      image: item.backgroundImageMobile[0]
     }))
     dispatch(selections.actions.setBackgroundImage(item.backgroundImage))
     dispatch(selections.actions.findMobileImg({
@@ -194,51 +156,32 @@ export const SelectionContent = ({ title, options }) => {
     }))
     dispatch(selections.actions.setImgChange())
     setActive(id)
+    setMobileImgChange(!true)
   }
 
   return (
     <SelectionsContainer>
       <Fade bottom>
-        {title === 'Size' ? 
+        {title === 'Size' ?
           <KitchenTypeCopy>
-            <h2>{title}</h2>
+            <h2>Välj kök att styla</h2>
           </KitchenTypeCopy> :
           <SelectionCopy>
             <h2>{title}</h2>
             <h4>{selectedProduct.name}</h4>
             <p>
-              {selectedProduct.category === 'Handles' ? selectedProduct.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') * 8 : selectedProduct.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
-              {selectedProduct.category === 'Handles' ? ' kr (8st)' : ' kr'}
+              {selectedProduct.category === 'Handtag & knoppar' ? handlePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : selectedProduct.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+              {selectedProduct.category === 'Handtag & knoppar' ? ' kr (8st)' : ' kr'}
             </p>
           </SelectionCopy>}
       </Fade>
       <Selections title={title}>
-        {options.map((option) => (
-          <Fade bottom>
-            <li
-              key={option.id}
-              className={active === option.id ? 'active' : undefined}
-              active={active}>
-              <Button
-                type="Button"
-                id={option.id}
-                className="active"
-                onClick={(event) => handleSelection(option, event.target.id)}>
-                <img src={option.img} alt="" />
-                {option.kitchenType &&
-                <>
-                  <h4>{option.name}</h4>
-                  <div>
-                    <p>
-                      {option.kitchenType}
-                    </p>
-                    <ColorSwatch colorSwatch={option.colorSwatch} />
-                    <p><span>-</span>{option.color}</p>
-                  </div>
-                </>}
-              </Button>
-            </li>
-          </Fade>
+        {products.map((product) => (
+          <Product
+            key={product.id}
+            active={active}
+            product={product}
+            handleSelection={handleSelection} />
         ))}
       </Selections>
     </SelectionsContainer>

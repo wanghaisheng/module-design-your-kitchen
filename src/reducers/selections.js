@@ -11,19 +11,22 @@ export const selections = createSlice({
   name: 'selections',
   initialState: {
     answers: [sizeOptions[0], frontOptions[0], worktopOptions[0], handleOptions[0], tapsOptions[0]],
-    size: {},
-    sizeImg: {},
-    frontImg: {},
-    worktopImg: {},
-    handlesImg: {},
-    tapsImg: {},
+    size: {
+      name: 'Träkök',
+      category: 'Size',
+      price: 10000,
+      image: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg'
+    },
+    sizeImg: '',
+    frontImg: '',
+    worktopImg: '',
+    handlesImg: '',
+    tapsImg: '',
     selectionsDone: false,
-    totalPrice: 0,
+    activeDesktopImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg',
+    activeMobileImg: '',
     currentBackgroundImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg',
     secondBackgroundImg: '',
-    currentMobileImg: '',
-    secondMobileImg: '',
-    mobileImg: '',
     backgroundImgChange: false
   },
   reducers: {
@@ -47,24 +50,16 @@ export const selections = createSlice({
     setBackgroundImage: (state, action) => {
       if (state.backgroundImgChange) {
         state.currentBackgroundImg = action.payload
+        state.activeDesktopImg = action.payload
       } else if (!state.backgroundImgChange) {
         state.secondBackgroundImg = action.payload
+        state.activeDesktopImg = action.payload
       }
-    },
-    setMobileImage: (state, action) => {
-      if (state.backgroundImgChange) {
-        state.currentMobileImg = action.payload
-      } else if (!state.backgroundImgChange) {
-        state.secondMobileImg = action.payload
-      }
-      console.log('current', state.currentMobileImg)
-      console.log('second', state.secondMobileImg)
     },
     setImgChange: (state, action) => {
       state.backgroundImgChange = !state.backgroundImgChange
-      console.log(state.backgroundImgChange)
     },
-    findMobileImg: (state, action)  => {
+    findMobileImg: (state, action) => {
       const images = action.payload.images
       const category = action.payload.category
       let activeImage = ''
@@ -77,9 +72,10 @@ export const selections = createSlice({
         activeImage = images[2]
       }
 
-      switch (action.payload.category) {
+      switch (category) {
         case 'Size':
           state.sizeImg = activeImage
+          state.activeMobileImg = activeImage
           break
         case 'Front':
           state.frontImg = activeImage
@@ -96,7 +92,6 @@ export const selections = createSlice({
         default:
           console.log('test')
       }
-      console.log(state.mobileImg)
     }
   }
 })

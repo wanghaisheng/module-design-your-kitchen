@@ -37,7 +37,7 @@ const SecondKitchenImage = styled(KitchenImage)`
   -o-transition: opacity 0.8s ease;
 `
 
-export const Selections = () => {
+export const Selections = () => { 
   const imageChange = useSelector((store) => store.selections.backgroundImgChange)
   const kitchenImg = useSelector((store) => store.selections.sizeImg)
   const frontImg = useSelector((store) => store.selections.frontImg)
@@ -48,39 +48,59 @@ export const Selections = () => {
   return (
     <>
       <Wrapper>
-        <SecondKitchenImage src={kitchenImg} className={imageChange ? undefined : 'transparent'} />
-        <KitchenImage src={kitchenImg} className={imageChange ? 'transparent' : undefined} />
+        <SecondKitchenImage
+          src={kitchenImg === '' ? sizeOptions[0].backgroundImageMobile[0] : kitchenImg}
+          className={imageChange ? undefined : 'transparent'} />
+        <KitchenImage
+          src={kitchenImg === '' ? sizeOptions[0].backgroundImageMobile[0] : kitchenImg}
+          className={imageChange ? 'transparent' : undefined} />
         <SelectionContent
           title="Size"
-          options={sizeOptions} />
+          products={sizeOptions} />
       </Wrapper>
       <Wrapper>
-        <SecondKitchenImage src={frontImg} className={imageChange ? undefined : 'transparent'} />
-        <KitchenImage src={frontImg} className={imageChange ? 'transparent' : undefined} />
+        <SecondKitchenImage
+          src={frontImg === '' ? frontOptions[0].backgroundImageMobile[0] : frontImg}
+          className={imageChange ? undefined : 'transparent'} />
+        <KitchenImage
+          src={frontImg === '' ? frontOptions[0].backgroundImageMobile[0] : frontImg}
+          className={imageChange ? 'transparent' : undefined} />
         <SelectionContent
           title="Front"
-          options={frontOptions} />
+          products={frontOptions} />
       </Wrapper>
       <Wrapper>
-        <SecondKitchenImage src={worktopImg} className={imageChange ? undefined : 'transparent'} />
-        <KitchenImage src={worktopImg} className={imageChange ? 'transparent' : undefined} />
+        <SecondKitchenImage
+          src={worktopImg === '' ? worktopOptions[0].backgroundImageMobile[0] : worktopImg}
+          className={imageChange ? undefined : 'transparent'} />
+        <KitchenImage
+          src={worktopImg === '' ? worktopOptions[0].backgroundImageMobile[0] : worktopImg}
+          className={imageChange ? 'transparent' : undefined} />
         <SelectionContent
-          title="Worktops"
-          options={worktopOptions} />
+          title="Bänkskiva"
+          products={worktopOptions} />
       </Wrapper>
       <Wrapper>
-        <SecondKitchenImage src={handlesImg} className={imageChange ? undefined : 'transparent'} />
-        <KitchenImage src={handlesImg} className={imageChange ? 'transparent' : undefined} />
+        <SecondKitchenImage
+          src={handlesImg === '' ? handleOptions[0].backgroundImageMobile[0] : handlesImg}
+          className={imageChange ? undefined : 'transparent'} />
+        <KitchenImage
+          src={handlesImg === '' ? handleOptions[0].backgroundImageMobile[0] : handlesImg}
+          className={imageChange ? 'transparent' : undefined} />
         <SelectionContent
-          title="Handles"
-          options={handleOptions} />
+          title="Handtag & knoppar"
+          products={handleOptions} />
       </Wrapper>
       <Wrapper>
-        <SecondKitchenImage src={tapsImg} className={imageChange ? undefined : 'transparent'} />
-        <KitchenImage src={tapsImg} className={imageChange ? 'transparent' : undefined} />
+        <SecondKitchenImage
+          src={tapsImg === '' ? tapsOptions[0].backgroundImageMobile[0] : tapsImg}
+          className={imageChange ? undefined : 'transparent'} />
+        <KitchenImage
+          src={tapsImg === '' ? tapsOptions[0].backgroundImageMobile[0] : tapsImg}
+          className={imageChange ? 'transparent' : undefined} />
         <SelectionContent
-          title="Taps"
-          options={tapsOptions} />
+          title="Blandare"
+          products={tapsOptions} />
       </Wrapper>
     </>
   )

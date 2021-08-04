@@ -37,7 +37,7 @@ export const Footer = () => {
   return (
     <AppFooter>
       <TotalPrice>
-        <p>Price: {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} kr</p>
+        <p>Pris: {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} kr</p>
       </TotalPrice>
     </AppFooter>
   )

@@ -132,9 +132,10 @@ export const Container = () => {
   return (
     <ContentWrapper>
       <ImageWrapper>
-        <ImageChange src={secondBackgroundImage} className={imageChange ? undefined : 'transparent'} />
+        <ImageChange
+          src={secondBackgroundImage}
+          className={imageChange ? undefined : 'transparent'} />
         <Image src={backgroundImage} className={imageChange ? 'transparent' : undefined} />
-
         <TotalPrice>
           <Price>{totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} kr</Price>
           <p>Vad är inkluderat i priset?</p>
