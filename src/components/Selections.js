@@ -1,11 +1,11 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
+import { selections } from 'reducers/selections'
 import { SelectionContent } from 'components/lib/SelectionContent'
 import {
   sizeOptions,
-  frontOptions,
   worktopOptions,
   handleOptions,
   tapsOptions
@@ -37,13 +37,18 @@ const SecondKitchenImage = styled(KitchenImage)`
   -o-transition: opacity 0.8s ease;
 `
 
-export const Selections = () => { 
+export const Selections = () => {
+  const dispatch = useDispatch()
+  const currentKitchen = useSelector((store) => store.selections.size.name)
   const imageChange = useSelector((store) => store.selections.backgroundImgChange)
   const kitchenImg = useSelector((store) => store.selections.sizeImg)
-  const frontImg = useSelector((store) => store.selections.frontImg)
   const worktopImg = useSelector((store) => store.selections.worktopImg)
   const handlesImg = useSelector((store) => store.selections.handlesImg)
   const tapsImg = useSelector((store) => store.selections.tapsImg)
+
+  useEffect(() => {
+    dispatch(selections.actions.updateImages())
+  }, [currentKitchen])
 
   return (
     <>
@@ -57,17 +62,6 @@ export const Selections = () => {
         <SelectionContent
           title="Size"
           products={sizeOptions} />
-      </Wrapper>
-      <Wrapper>
-        <SecondKitchenImage
-          src={frontImg === '' ? frontOptions[0].backgroundImageMobile[0] : frontImg}
-          className={imageChange ? undefined : 'transparent'} />
-        <KitchenImage
-          src={frontImg === '' ? frontOptions[0].backgroundImageMobile[0] : frontImg}
-          className={imageChange ? 'transparent' : undefined} />
-        <SelectionContent
-          title="Front"
-          products={frontOptions} />
       </Wrapper>
       <Wrapper>
         <SecondKitchenImage

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Fade from 'react-reveal'
 import styled from 'styled-components'
@@ -116,12 +116,6 @@ export const Selections = styled.ul`
     padding: 1px;
     margin: 1rem 0;
 
-    /*&:hover {
-      border: 1px solid lightgrey;
-      border-radius: 0.2rem;
-      padding: 0;
-    }*/
-
     img {
       width: 100%;
       min-height: 6rem;
@@ -135,8 +129,8 @@ export const SelectionContent = ({ title, products }) => {
   const dispatch = useDispatch()
   const selectedProducts = useSelector((store) => store.selections.answers) 
   const selectedProduct = selectedProducts.find((product) => product.category === title)
+  const currentKitchen = useSelector((store) => store.selections.size.name)
   const [active, setActive] = useState(selectedProduct.id)
-  const [mobileImgChange, setMobileImgChange] = useState(false)
   let handlePrice = 0
   if (selectedProduct.category === 'Handtag & knoppar') {
     handlePrice = selectedProduct.price * 8
@@ -147,7 +141,8 @@ export const SelectionContent = ({ title, products }) => {
       name: item.name,
       category: item.category,
       price: item.price,
-      image: item.backgroundImageMobile[0]
+      image: item.backgroundImageMobile[0],
+      backgroundImageMobile: item.backgroundImageMobile
     }))
     dispatch(selections.actions.setBackgroundImage(item.backgroundImage))
     dispatch(selections.actions.findMobileImg({
@@ -156,8 +151,13 @@ export const SelectionContent = ({ title, products }) => {
     }))
     dispatch(selections.actions.setImgChange())
     setActive(id)
-    setMobileImgChange(!true)
   }
+
+  /*useEffect(() => {
+    if (selectedProduct.category !== 'Size') {
+      setActive(products[0].id)
+    }
+  }, [currentKitchen])*/
 
   return (
     <SelectionsContainer>
