@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { NextStep } from './lib/NextStep'
+import { NextStep } from './NextStep'
 
 const ShareResultContent = styled.div`
   display: flex;
@@ -12,6 +12,7 @@ const ShareResultContent = styled.div`
 
   @media (min-width: 768px) {
     margin: 3rem 0 0 0;
+    padding: 30vh 1rem 5.5rem 1rem;
   }
 
   h3 {

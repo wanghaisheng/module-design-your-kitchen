@@ -28,20 +28,29 @@ const SummaryContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 1600px;
   @media (min-width: 768px) {
     flex-direction: row;
-    justify-content: center;
+    padding: 0 1rem;
+  }
+`
+
+const ImageWrapper = styled.div`
+  position: relative;
+  @media (min-width: 768px) {
+    width: 55%;
   }
 `
 
 const FinalAnswers = styled.ol`
+  width: 100%;
   list-style-type: none;
-  padding: 2rem 0 0 2.5rem;
+  padding: 55vh 1.5rem 0;
   margin-top: 0;
-  padding: 2rem 1rem;
 
   @media (min-width: 768px) {
     padding: 2rem 0 0 2.5rem;
+    width: 45%;
   }
 
   li {
@@ -71,18 +80,22 @@ const TotalCost = styled.div`
   }
 `
 const Image = styled.img`
-  min-height: 50vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50vh;
   width: 100%;
   object-fit: cover;
   @media (min-width: 768px) {
     height: 60vh;
-    width: 60%;
   }
 `
 
 export const Summary = () => {
   const kitchenResultImg = useSelector((store) => store.selections.activeDesktopImg)
   const mobileResultImg = useSelector((store) => store.selections.activeMobileImg)
+  const worktopLayer = useSelector((store) => store.selections.worktopLayer)
+  const tapLayer = useSelector((store) => store.selections.tapLayer)
   const selectedProducts = useSelector((store) => store.selections.answers)
   const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
 
@@ -93,10 +106,15 @@ export const Summary = () => {
   })
 
   return (
-    <SummaryWrapper>
-      <Fade bottom>
+    <Fade bottom>
+      <SummaryWrapper>
         <SummaryContent>
-          <Image src={mobileResultImg === '' ? kitchenResultImg : mobileResultImg} alt="" />
+          <ImageWrapper>
+            <Image src={mobileResultImg === '' ? kitchenResultImg : mobileResultImg} alt="" />
+            <Image src={kitchenResultImg} alt="" />
+            <Image src={worktopLayer} alt="" />
+            <Image src={tapLayer} alt="" />
+          </ImageWrapper>
           <FinalAnswers>
             {selectedProducts.map((product) => (
               <li key={product.name}>
@@ -112,10 +130,10 @@ export const Summary = () => {
             </li>
           </FinalAnswers>
         </SummaryContent>
-      </Fade>
-      <Fade bottom>
-        <ShareResult />
-      </Fade>
-    </SummaryWrapper>
+        <Fade bottom>
+          <ShareResult />
+        </Fade>
+      </SummaryWrapper>
+    </Fade>
   )
 }

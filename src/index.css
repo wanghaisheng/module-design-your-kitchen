@@ -32,10 +32,6 @@ code {
   padding: 0;
 }
 
-/*.active:hover {
-  box-shadow: 0 0 2px 3px lightgrey;
-}*/
-
 .transparent {
   opacity: 0;
 }

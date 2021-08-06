@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
-import { selections } from '../reducers/selections'
+import { selections } from '../../reducers/selections'
 import { Selections } from './Selections'
 
 export const ContentWrapper = styled.div`
@@ -36,7 +36,7 @@ export const Image = styled.img`
   -o-transition: opacity 0.8s ease;
 `
 
-const ImageChange = styled(Image)`
+const SecondImage = styled(Image)`
   transition: opacity 0.8s ease ;
   -webkit-transition: opacity 0.8s ease;
   -moz-transition: opacity 0.8s ease;
@@ -122,6 +122,8 @@ export const Container = () => {
   const backgroundImage = useSelector((store) => store.selections.currentBackgroundImg)
   const secondBackgroundImage = useSelector((store) => store.selections.secondBackgroundImg)
   const imageChange = useSelector((store) => store.selections.backgroundImgChange)
+  const worktopLayer = useSelector((store) => store.selections.worktopLayer)
+  const tapLayer = useSelector((store) => store.selections.tapLayer)
   const selectedProducts = useSelector((store) => store.selections.answers)
   const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
 
@@ -132,10 +134,13 @@ export const Container = () => {
   return (
     <ContentWrapper>
       <ImageWrapper>
-        <ImageChange
+        <SecondImage
           src={secondBackgroundImage}
           className={imageChange ? undefined : 'transparent'} />
         <Image src={backgroundImage} className={imageChange ? 'transparent' : undefined} />
+        <Image src={worktopLayer} />
+        <Image src="" />
+        <Image src={tapLayer} />
         <TotalPrice>
           <Price>{totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} kr</Price>
           <p>Vad är inkluderat i priset?</p>

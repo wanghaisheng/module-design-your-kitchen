@@ -4,7 +4,7 @@ import Fade from 'react-reveal'
 import styled from 'styled-components'
 
 import { selections } from 'reducers/selections'
-import { Product } from '../Product'
+import { Product } from '../designYourKitchen/Product'
 
 export const SelectionsContainer = styled.div`
   position: relative;
@@ -111,7 +111,7 @@ export const Selections = styled.ul`
   li {
     box-sizing: border-box;
     overflow: hidden;
-    width: ${({ title }) => (title === 'Size' ? '45%' : '28%')};
+    width: ${({ title }) => (title === 'Kökstyp' ? '45%' : '28%')};
     transform: border padding .5s;
     padding: 1px;
     margin: 1rem 0;
@@ -129,7 +129,6 @@ export const SelectionContent = ({ title, products }) => {
   const dispatch = useDispatch()
   const selectedProducts = useSelector((store) => store.selections.answers) 
   const selectedProduct = selectedProducts.find((product) => product.category === title)
-  const currentKitchen = useSelector((store) => store.selections.size.name)
   const [active, setActive] = useState(selectedProduct.id)
   let handlePrice = 0
   if (selectedProduct.category === 'Handtag & knoppar') {
@@ -141,28 +140,29 @@ export const SelectionContent = ({ title, products }) => {
       name: item.name,
       category: item.category,
       price: item.price,
-      image: item.backgroundImageMobile[0],
-      backgroundImageMobile: item.backgroundImageMobile
+      image: item.backgroundImagesMobile[0],
+      backgroundImagesMobile: item.backgroundImagesMobile
     }))
-    dispatch(selections.actions.setBackgroundImage(item.backgroundImage))
+    if (item.category === 'Kökstyp') {
+      dispatch(selections.actions.setBackgroundImage(item.backgroundImage))
+      dispatch(selections.actions.setImgChange())
+    } else {
+      dispatch(selections.actions.setLayerImage({
+        img: item.layerImg,
+        category: item.category
+      }))
+    }
     dispatch(selections.actions.findMobileImg({
       category: item.category,
-      images: item.backgroundImageMobile
+      images: item.backgroundImagesMobile
     }))
-    dispatch(selections.actions.setImgChange())
     setActive(id)
   }
-
-  /*useEffect(() => {
-    if (selectedProduct.category !== 'Size') {
-      setActive(products[0].id)
-    }
-  }, [currentKitchen])*/
 
   return (
     <SelectionsContainer>
       <Fade bottom>
-        {title === 'Size' ?
+        {title === 'Kökstyp' ?
           <KitchenTypeCopy>
             <h2>Välj kök att styla</h2>
           </KitchenTypeCopy> :

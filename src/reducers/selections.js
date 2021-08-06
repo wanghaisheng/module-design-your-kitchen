@@ -1,40 +1,59 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {
-  sizeOptions,
+  kitchenTypeOptions,
   worktopOptions,
   handleOptions,
   tapsOptions
-} from '../data'
+} from '../components/data/data'
 
 export const selections = createSlice({
   name: 'selections',
   initialState: {
-    answers: [sizeOptions[0], worktopOptions[0], handleOptions[0], tapsOptions[0]],
-    size: {
+    answers: [
+      kitchenTypeOptions[0],
+      worktopOptions[0],
+      handleOptions[0],
+      tapsOptions[0]
+    ],
+    kitchenType: {
       name: 'Träkök',
-      category: 'Size',
+      category: 'Kökstyp',
       price: 10000,
       image: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg'
     },
-    sizeImg: '',
+    kitchenTypeImg: '',
     worktopImg: '',
-    initialWorktopImg: [worktopOptions[0].backgroundImageMobile[0], worktopOptions[0].backgroundImageMobile[1], worktopOptions[0].backgroundImageMobile[2]],
+    initialWorktopImg: [
+      worktopOptions[0].backgroundImagesMobile[0],
+      worktopOptions[0].backgroundImagesMobile[1],
+      worktopOptions[0].backgroundImagesMobile[2]
+    ],
+    worktopLayer: '',
     handlesImg: '',
-    initialHandlesImg: [handleOptions[0].backgroundImageMobile[0], handleOptions[0].backgroundImageMobile[1], handleOptions[0].backgroundImageMobile[2]],
+    initialHandlesImg: [
+      handleOptions[0].backgroundImagesMobile[0],
+      handleOptions[0].backgroundImagesMobile[1],
+      handleOptions[0].backgroundImagesMobile[2]
+    ],
+    handleLayer: '',
     tapsImg: '',
-    initialTapsImg: [tapsOptions[0].backgroundImageMobile[0], tapsOptions[0].backgroundImageMobile[1], tapsOptions[0].backgroundImageMobile[2]],
+    initialTapsImg: [
+      tapsOptions[0].backgroundImagesMobile[0],
+      tapsOptions[0].backgroundImagesMobile[1],
+      tapsOptions[0].backgroundImagesMobile[2]
+    ],
+    tapLayer: '',
     selectionsDone: false,
     activeDesktopImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg',
     activeMobileImg: '',
     currentBackgroundImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg',
     secondBackgroundImg: '',
-    backgroundImgChange: false,
-    test: {}
+    backgroundImgChange: false
   },
   reducers: {
     addAnswer: (state, action) => {
       const existingCategory = state.answers.find((answer) => answer.category === action.payload.category)
-      console.log(existingCategory)
+
       if (existingCategory) {
         state.answers = state.answers.filter((answer) => answer.category !== action.payload.category)
         state.answers = [...state.answers, action.payload]
@@ -42,8 +61,8 @@ export const selections = createSlice({
         state.answers = [...state.answers, action.payload]
       }
 
-      if (action.payload.category === 'Size') {
-        state.size = action.payload
+      if (action.payload.category === 'Kökstyp') {
+        state.kitchenType = action.payload
       }
     },
     setSelectionsDone: (state, action) => {
@@ -58,6 +77,21 @@ export const selections = createSlice({
         state.activeDesktopImg = action.payload
       }
     },
+    setLayerImage: (state, action) => {
+      const product = action.payload
+      const img = product.img
+      const category = product.category
+
+      if (category === 'Bänkskiva') {
+        state.worktopLayer = img
+      }
+      if (category === 'Blandare') {
+        state.tapLayer = img
+      }
+      if (category === 'Handtag & knoppar') {
+        state.handleLayer = img
+      }
+    },
     setImgChange: (state, action) => {
       state.backgroundImgChange = !state.backgroundImgChange
     },
@@ -67,41 +101,24 @@ export const selections = createSlice({
       state.handlesImg = ''
       const selectedWorktop = state.answers.find((product) => product.category === 'Bänkskiva')
       const selectedHandle = state.answers.find((product) => product.category === 'Handtag & knoppar')
-      const selectedHandleImages = selectedHandle.backgroundImageMobile
+      const [ selectedHandleImages ] = selectedHandle.backgroundImagesMobile
       const selectedTap = state.answers.find((product) => product.category === 'Blandare')
-      const selectedTapImages = selectedTap.backgroundImageMobile
+      const selectedTapImages = selectedTap.backgroundImagesMobile
       
-      if (state.size.name === 'Träkök') {
-        state.worktopImg = selectedWorktop.backgroundImageMobile[0]
-        state.handlesImg = selectedHandle.backgroundImageMobile[0]
-        state.tapsImg = selectedTap.backgroundImageMobile[0]
-      } else if (state.size.name === 'Shakerkök') {
-        state.worktopImg = selectedWorktop.backgroundImageMobile[1]
-        state.handlesImg = selectedHandle.backgroundImageMobile[1]
-        state.tapsImg = selectedTap.backgroundImageMobile[1]
-        /*if (state.worktopImg === '') {
-          state.worktopImg = state.initialWorktopImg[1]
-        }
-        if (state.handlesImg === '') {
-          state.handlesImg = state.initialHandlesImg[1]
-        }
-        if (state.tapsImg === '') {
-          state.tapsImg = state.initialTapsImg[1]
-        }*/
-      } else {
-        state.worktopImg = selectedWorktop.backgroundImageMobile[2]
-        state.handlesImg = selectedHandle.backgroundImageMobile[2]
-        state.tapsImg = selectedTap.backgroundImageMobile[2]
-        /*
-        if (state.worktopImg === '') {
-          state.worktopImg = state.initialWorktopImg[2]
-        }
-        if (state.handlesImg === '') {
-          state.handlesImg = state.initialHandlesImg[2]
-        }
-        if (state.tapsImg === '') {
-          state.tapsImg = state.initialTapsImg[2]
-        }*/
+      if (state.kitchenType.name === 'Träkök') {
+        state.worktopImg = selectedWorktop.backgroundImagesMobile[0]
+        state.handlesImg = selectedHandle.backgroundImagesMobile[0]
+        state.tapsImg = selectedTap.backgroundImagesMobile[0]
+      }
+      if (state.kitchenType.name === 'Shakerkök') {
+        state.worktopImg = selectedWorktop.backgroundImagesMobile[1]
+        state.handlesImg = selectedHandle.backgroundImagesMobile[1]
+        state.tapsImg = selectedTap.backgroundImagesMobile[1]
+      }
+      if (state.kitchenType.name === 'Slätt kök') {
+        state.worktopImg = selectedWorktop.backgroundImagesMobile[2]
+        state.handlesImg = selectedHandle.backgroundImagesMobile[2]
+        state.tapsImg = selectedTap.backgroundImagesMobile[2]
       }
     },
     findMobileImg: (state, action) => {
@@ -109,44 +126,17 @@ export const selections = createSlice({
       const category = action.payload.category
       let activeImage = ''
 
-      if (state.size.name === 'Träkök') {
+      if (state.kitchenType.name === 'Träkök') {
         activeImage = images[0]
-        /*if (state.worktopImg === '') {
-          state.worktopImg = state.initialWorktopImg[0]
-        }
-        if (state.handlesImg === '') {
-          state.handlesImg = state.initialHandlesImg[0]
-        }
-        if (state.tapsImg === '') {
-          state.tapsImg = state.initialTapsImg[0]
-        }*/
-      } else if (state.size.name === 'Shakerkök') {
+      } else if (state.kitchenType.name === 'Shakerkök') {
         activeImage = images[1]
-        /*if (state.worktopImg === '') {
-          state.worktopImg = state.initialWorktopImg[1]
-        }
-        if (state.handlesImg === '') {
-          state.handlesImg = state.initialHandlesImg[1]
-        }
-        if (state.tapsImg === '') {
-          state.tapsImg = state.initialTapsImg[1]
-        }*/
       } else {
         activeImage = images[2]
-        /*if (state.worktopImg === '') {
-          state.worktopImg = state.initialWorktopImg[2]
-        }
-        if (state.handlesImg === '') {
-          state.handlesImg = state.initialHandlesImg[2]
-        }
-        if (state.tapsImg === '') {
-          state.tapsImg = state.initialTapsImg[2]
-        }*/
       }
 
       switch (category) {
-        case 'Size':
-          state.sizeImg = activeImage
+        case 'Kökstyp':
+          state.kitchenTypeImg = activeImage
           state.activeMobileImg = activeImage
           break
         case 'Bänkskiva':
