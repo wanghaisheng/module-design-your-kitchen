@@ -123,8 +123,9 @@ export const Container = () => {
   const secondBackgroundImage = useSelector((store) => store.selections.secondBackgroundImg)
   const imageChange = useSelector((store) => store.selections.backgroundImgChange)
   const worktopLayer = useSelector((store) => store.selections.worktopLayer)
+  const handlesLayer = useSelector((store) => store.selections.handlesLayer)
   const tapLayer = useSelector((store) => store.selections.tapLayer)
-  const selectedProducts = useSelector((store) => store.selections.answers)
+  const selectedProducts = useSelector((store) => store.selections.selectedProducts)
   const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
 
   const handleGoToNext = () => {
@@ -139,7 +140,7 @@ export const Container = () => {
           className={imageChange ? undefined : 'transparent'} />
         <Image src={backgroundImage} className={imageChange ? 'transparent' : undefined} />
         <Image src={worktopLayer} />
-        <Image src="" />
+        <Image src={handlesLayer} />
         <Image src={tapLayer} />
         <TotalPrice>
           <Price>{totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} kr</Price>

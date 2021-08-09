@@ -1,8 +1,6 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-
-import { selections } from '../reducers/selections'
 
 const AppFooter = styled.footer`
   width: 100%;
@@ -30,9 +28,9 @@ const TotalPrice = styled.div`
 `
 
 export const Footer = () => {
-  const selectedProducts = useSelector((store) => store.selections.answers)
+  const selectedProducts = useSelector((store) => store.selections.selectedProducts)
 
-  const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
+  const totalPrice = selectedProducts.reduce((total, product) => (total + product.price), 0)
 
   return (
     <AppFooter>

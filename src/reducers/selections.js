@@ -9,17 +9,17 @@ import {
 export const selections = createSlice({
   name: 'selections',
   initialState: {
-    answers: [
+    selectedProducts: [
       kitchenTypeOptions[0],
       worktopOptions[0],
       handleOptions[0],
       tapsOptions[0]
     ],
     kitchenType: {
-      name: 'Träkök',
-      category: 'Kökstyp',
-      price: 10000,
-      image: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg'
+      name: kitchenTypeOptions[0].name,
+      category: kitchenTypeOptions[0].category,
+      price: kitchenTypeOptions[0].price,
+      image: kitchenTypeOptions[0].backgroundImage
     },
     kitchenTypeImg: '',
     worktopImg: '',
@@ -28,21 +28,21 @@ export const selections = createSlice({
       worktopOptions[0].backgroundImagesMobile[1],
       worktopOptions[0].backgroundImagesMobile[2]
     ],
-    worktopLayer: '',
+    worktopLayer: worktopOptions[0].layerImg,
     handlesImg: '',
     initialHandlesImg: [
       handleOptions[0].backgroundImagesMobile[0],
       handleOptions[0].backgroundImagesMobile[1],
       handleOptions[0].backgroundImagesMobile[2]
     ],
-    handleLayer: '',
+    handlesLayer: '',
     tapsImg: '',
     initialTapsImg: [
       tapsOptions[0].backgroundImagesMobile[0],
       tapsOptions[0].backgroundImagesMobile[1],
       tapsOptions[0].backgroundImagesMobile[2]
     ],
-    tapLayer: '',
+    tapLayer: tapsOptions[0].layerImg,
     selectionsDone: false,
     activeDesktopImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg',
     activeMobileImg: '',
@@ -52,13 +52,13 @@ export const selections = createSlice({
   },
   reducers: {
     addAnswer: (state, action) => {
-      const existingCategory = state.answers.find((answer) => answer.category === action.payload.category)
+      const existingCategory = state.selectedProducts.find((answer) => answer.category === action.payload.category)
 
       if (existingCategory) {
-        state.answers = state.answers.filter((answer) => answer.category !== action.payload.category)
-        state.answers = [...state.answers, action.payload]
+        state.selectedProducts = state.selectedProducts.filter((answer) => answer.category !== action.payload.category)
+        state.selectedProducts = [...state.selectedProducts, action.payload]
       } else {
-        state.answers = [...state.answers, action.payload]
+        state.selectedProducts = [...state.selectedProducts, action.payload]
       }
 
       if (action.payload.category === 'Kökstyp') {
@@ -78,9 +78,7 @@ export const selections = createSlice({
       }
     },
     setLayerImage: (state, action) => {
-      const product = action.payload
-      const img = product.img
-      const category = product.category
+      const { category, img } = action.payload
 
       if (category === 'Bänkskiva') {
         state.worktopLayer = img
@@ -89,49 +87,56 @@ export const selections = createSlice({
         state.tapLayer = img
       }
       if (category === 'Handtag & knoppar') {
-        state.handleLayer = img
+        state.handlesLayer = img
       }
     },
     setImgChange: (state, action) => {
       state.backgroundImgChange = !state.backgroundImgChange
     },
-    updateImages: (state, action) => {
-      state.worktopImg = ''
-      state.tapsImg = ''
-      state.handlesImg = ''
-      const selectedWorktop = state.answers.find((product) => product.category === 'Bänkskiva')
-      const selectedHandle = state.answers.find((product) => product.category === 'Handtag & knoppar')
-      const [ selectedHandleImages ] = selectedHandle.backgroundImagesMobile
-      const selectedTap = state.answers.find((product) => product.category === 'Blandare')
-      const selectedTapImages = selectedTap.backgroundImagesMobile
-      
+    updateMobileImages: (state, action) => {
+      const selectedWorktop = state.selectedProducts.find((product) => product.category === 'Bänkskiva')
+      const selectedHandle = state.selectedProducts.find((product) => product.category === 'Handtag & knoppar')
+      const selectedTap = state.selectedProducts.find((product) => product.category === 'Blandare')
+
+      const worktopImageWood = selectedWorktop.backgroundImagesMobile[0]
+      const handlesImageWood = selectedHandle.backgroundImagesMobile[0]
+      const tapsImageWood = selectedTap.backgroundImagesMobile[0]
+      const worktopImageShaker = selectedWorktop.backgroundImagesMobile[1]
+      const handlesImageShaker = selectedHandle.backgroundImagesMobile[1]
+      const tapsImageShaker = selectedTap.backgroundImagesMobile[1]
+      const worktopImageMinimalist = selectedWorktop.backgroundImagesMobile[2]
+      const handlesImageMinimalist = selectedHandle.backgroundImagesMobile[2]
+      const tapsImageMinimalist = selectedTap.backgroundImagesMobile[2]
+
       if (state.kitchenType.name === 'Träkök') {
-        state.worktopImg = selectedWorktop.backgroundImagesMobile[0]
-        state.handlesImg = selectedHandle.backgroundImagesMobile[0]
-        state.tapsImg = selectedTap.backgroundImagesMobile[0]
+        state.worktopImg = worktopImageWood
+        state.handlesImg = handlesImageWood
+        state.tapsImg = tapsImageWood
       }
       if (state.kitchenType.name === 'Shakerkök') {
-        state.worktopImg = selectedWorktop.backgroundImagesMobile[1]
-        state.handlesImg = selectedHandle.backgroundImagesMobile[1]
-        state.tapsImg = selectedTap.backgroundImagesMobile[1]
+        state.worktopImg = worktopImageShaker
+        state.handlesImg = handlesImageShaker
+        state.tapsImg = tapsImageShaker
       }
       if (state.kitchenType.name === 'Slätt kök') {
-        state.worktopImg = selectedWorktop.backgroundImagesMobile[2]
-        state.handlesImg = selectedHandle.backgroundImagesMobile[2]
-        state.tapsImg = selectedTap.backgroundImagesMobile[2]
+        state.worktopImg = worktopImageMinimalist
+        state.handlesImg = handlesImageMinimalist
+        state.tapsImg = tapsImageMinimalist
       }
     },
-    findMobileImg: (state, action) => {
-      const images = action.payload.images
-      const category = action.payload.category
+    setMobileImg: (state, action) => {
+      const { images, category } = action.payload
+      const woodenKitchenImg = images[0]
+      const shakerKitchenImg = images[1]
+      const minimalistKitchenImg = images[2]
       let activeImage = ''
 
       if (state.kitchenType.name === 'Träkök') {
-        activeImage = images[0]
+        activeImage = woodenKitchenImg
       } else if (state.kitchenType.name === 'Shakerkök') {
-        activeImage = images[1]
+        activeImage = shakerKitchenImg
       } else {
-        activeImage = images[2]
+        activeImage = minimalistKitchenImg
       }
 
       switch (category) {

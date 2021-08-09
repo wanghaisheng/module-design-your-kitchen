@@ -42,7 +42,7 @@ const ImageWrapper = styled.div`
   }
 `
 
-const FinalAnswers = styled.ol`
+const FinalSelection = styled.ol`
   width: 100%;
   list-style-type: none;
   padding: 55vh 1.5rem 0;
@@ -95,8 +95,9 @@ export const Summary = () => {
   const kitchenResultImg = useSelector((store) => store.selections.activeDesktopImg)
   const mobileResultImg = useSelector((store) => store.selections.activeMobileImg)
   const worktopLayer = useSelector((store) => store.selections.worktopLayer)
+  const handlesLayer = useSelector((store) => store.selections.handlesLayer)
   const tapLayer = useSelector((store) => store.selections.tapLayer)
-  const selectedProducts = useSelector((store) => store.selections.answers)
+  const selectedProducts = useSelector((store) => store.selections.selectedProducts)
   const totalPrice = selectedProducts.reduce((total, answer) => (total + answer.price), 0)
 
   const monthlyPayment = totalPrice / 36
@@ -113,9 +114,10 @@ export const Summary = () => {
             <Image src={mobileResultImg === '' ? kitchenResultImg : mobileResultImg} alt="" />
             <Image src={kitchenResultImg} alt="" />
             <Image src={worktopLayer} alt="" />
+            <Image src={handlesLayer} alt="" />
             <Image src={tapLayer} alt="" />
           </ImageWrapper>
-          <FinalAnswers>
+          <FinalSelection>
             {selectedProducts.map((product) => (
               <li key={product.name}>
                 <h4>{product.category}</h4>
@@ -128,7 +130,7 @@ export const Summary = () => {
                 <span>{Math.ceil(monthlyPayment).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} kr/mån</span>
               </TotalCost>
             </li>
-          </FinalAnswers>
+          </FinalSelection>
         </SummaryContent>
         <Fade bottom>
           <ShareResult />

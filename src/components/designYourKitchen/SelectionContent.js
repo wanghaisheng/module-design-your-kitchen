@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Fade from 'react-reveal'
 import styled from 'styled-components'
 
 import { selections } from 'reducers/selections'
-import { Product } from '../designYourKitchen/Product'
+import { Product } from './Product'
 
 export const SelectionsContainer = styled.div`
   position: relative;
@@ -127,7 +127,7 @@ export const Selections = styled.ul`
 
 export const SelectionContent = ({ title, products }) => {
   const dispatch = useDispatch()
-  const selectedProducts = useSelector((store) => store.selections.answers) 
+  const selectedProducts = useSelector((store) => store.selections.selectedProducts)
   const selectedProduct = selectedProducts.find((product) => product.category === title)
   const [active, setActive] = useState(selectedProduct.id)
   let handlePrice = 0
@@ -136,6 +136,7 @@ export const SelectionContent = ({ title, products }) => {
   }
 
   const handleSelection = (item, id) => {
+
     dispatch(selections.actions.addAnswer({
       name: item.name,
       category: item.category,
@@ -143,6 +144,7 @@ export const SelectionContent = ({ title, products }) => {
       image: item.backgroundImagesMobile[0],
       backgroundImagesMobile: item.backgroundImagesMobile
     }))
+
     if (item.category === 'Kökstyp') {
       dispatch(selections.actions.setBackgroundImage(item.backgroundImage))
       dispatch(selections.actions.setImgChange())
@@ -152,10 +154,12 @@ export const SelectionContent = ({ title, products }) => {
         category: item.category
       }))
     }
-    dispatch(selections.actions.findMobileImg({
+
+    dispatch(selections.actions.setMobileImg({
       category: item.category,
       images: item.backgroundImagesMobile
     }))
+
     setActive(id)
   }
 
