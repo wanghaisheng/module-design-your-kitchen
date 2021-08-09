@@ -136,7 +136,6 @@ export const SelectionContent = ({ title, products }) => {
   }
 
   const handleSelection = (item, id) => {
-
     dispatch(selections.actions.addAnswer({
       name: item.name,
       category: item.category,
@@ -174,8 +173,7 @@ export const SelectionContent = ({ title, products }) => {
             <h2>{title}</h2>
             <h4>{selectedProduct.name}</h4>
             <p>
-              {selectedProduct.category === 'Handtag & knoppar' ? handlePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : selectedProduct.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
-              {selectedProduct.category === 'Handtag & knoppar' ? ' kr (8st)' : ' kr'}
+              {selectedProduct.category === 'Handtag & knoppar' ? handlePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ').concat(' ', 'kr (8st)') : selectedProduct.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ').concat(' ', 'kr')}
             </p>
           </SelectionCopy>}
       </Fade>

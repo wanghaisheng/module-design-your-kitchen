@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import { ShareResult } from './ShareResult'
 
-const SummaryWrapper = styled.div`
+const ResultWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,7 @@ const SummaryWrapper = styled.div`
   }
 `
 
-const SummaryContent = styled.div`
+const ResultContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -91,7 +91,7 @@ const Image = styled.img`
   }
 `
 
-export const Summary = () => {
+export const Result = () => {
   const kitchenResultImg = useSelector((store) => store.selections.activeDesktopImg)
   const mobileResultImg = useSelector((store) => store.selections.activeMobileImg)
   const worktopLayer = useSelector((store) => store.selections.worktopLayer)
@@ -108,8 +108,8 @@ export const Summary = () => {
 
   return (
     <Fade bottom>
-      <SummaryWrapper>
-        <SummaryContent>
+      <ResultWrapper>
+        <ResultContent>
           <ImageWrapper>
             <Image src={mobileResultImg === '' ? kitchenResultImg : mobileResultImg} alt="" />
             <Image src={kitchenResultImg} alt="" />
@@ -131,11 +131,11 @@ export const Summary = () => {
               </TotalCost>
             </li>
           </FinalSelection>
-        </SummaryContent>
+        </ResultContent>
         <Fade bottom>
           <ShareResult />
         </Fade>
-      </SummaryWrapper>
+      </ResultWrapper>
     </Fade>
   )
 }

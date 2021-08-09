@@ -23,28 +23,13 @@ export const selections = createSlice({
     },
     kitchenTypeImg: '',
     worktopImg: '',
-    initialWorktopImg: [
-      worktopOptions[0].backgroundImagesMobile[0],
-      worktopOptions[0].backgroundImagesMobile[1],
-      worktopOptions[0].backgroundImagesMobile[2]
-    ],
     worktopLayer: worktopOptions[0].layerImg,
     handlesImg: '',
-    initialHandlesImg: [
-      handleOptions[0].backgroundImagesMobile[0],
-      handleOptions[0].backgroundImagesMobile[1],
-      handleOptions[0].backgroundImagesMobile[2]
-    ],
     handlesLayer: '',
     tapsImg: '',
-    initialTapsImg: [
-      tapsOptions[0].backgroundImagesMobile[0],
-      tapsOptions[0].backgroundImagesMobile[1],
-      tapsOptions[0].backgroundImagesMobile[2]
-    ],
     tapLayer: tapsOptions[0].layerImg,
     selectionsDone: false,
-    activeDesktopImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg',
+    activeDesktopImg: kitchenTypeOptions[0].backgroundImage,
     activeMobileImg: '',
     currentBackgroundImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg',
     secondBackgroundImg: '',

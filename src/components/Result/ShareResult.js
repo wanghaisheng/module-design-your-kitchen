@@ -37,10 +37,10 @@ export const ShareResult = () => {
       <h3>Select your preferd way forward</h3>
       <p>It&apos;s all for free!</p>
       <NextStepContainer>
-        <NextStep 
+        <NextStep
           title="Get a free 3D drawing"
           text="A kitchen designer will create a drawing and send it to you" />
-        <NextStep 
+        <NextStep
           title="Continue in 3D tool"
           text="Be creative on your own, draw doors, windows and plumbing" />
         <NextStep

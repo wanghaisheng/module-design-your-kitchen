@@ -10,7 +10,6 @@ export const ContentWrapper = styled.div`
   width: 100%;
   padding-top: 5rem;
   justify-content: space-between;
-  //height: 100vh;
 `
 
 export const ImageWrapper = styled.div`

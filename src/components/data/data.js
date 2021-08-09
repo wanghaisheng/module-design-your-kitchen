@@ -61,7 +61,7 @@ export const worktopOptions = [
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486425/Ska%CC%88rmavbild_2021-07-05_kl._13.55.55_fgmnou.png',
     price: 3945,
     category: 'Bänkskiva',
-    layerImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628164518/58da603f5f58be1227aec93e_zwckmh.png',
+    layerImg: '',
     backgroundImagesMobile: [
       'https://res.cloudinary.com/dztqyanvb/image/upload/v1628072856/mattanpassat-kok-inspiration-2000_axsqaj.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
     ]

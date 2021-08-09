@@ -4,13 +4,13 @@ import Fade from 'react-reveal'
 import styled from 'styled-components'
 
 import { selections } from 'reducers/selections'
-import { SelectionContent } from 'components/designYourKitchen/SelectionContent'
+import { SelectionContent } from 'components/DesignYourKitchen/SelectionContent'
 import {
   kitchenTypeOptions,
   worktopOptions,
   handleOptions,
   tapsOptions
-} from 'components/data/data'
+} from 'components/Data/data'
 
 const MobileImageWrapper = styled.div`
   position: relative;
