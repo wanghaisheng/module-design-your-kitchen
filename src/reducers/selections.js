@@ -4,7 +4,7 @@ import {
   worktopOptions,
   handleOptions,
   tapsOptions
-} from '../components/Data/data'
+} from '../components/ProductData/data'
 
 export const selections = createSlice({
   name: 'selections',
