@@ -51,7 +51,7 @@ export const worktopOptions = [
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486426/Ska%CC%88rmavbild_2021-07-05_kl._13.55.36_zsindr.png',
     price: 2459,
     category: 'Bänkskiva',
-    /*layerImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628231330/output-onlinepngtools_2_fq0pir.png',*/
+    layerImg: '',
     backgroundImagesMobile: [
       'https://res.cloudinary.com/dztqyanvb/image/upload/v1628072856/mattanpassat-kok-inspiration-2000_axsqaj.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
     ]
@@ -73,7 +73,7 @@ export const worktopOptions = [
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486425/Ska%CC%88rmavbild_2021-07-05_kl._13.55.43_xxzldk.png',
     price: 5531,
     category: 'Bänkskiva',
-    layerImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628231330/output-onlinepngtools_2_fq0pir.png',
+    layerImg: '',
     backgroundImagesMobile: [
       'https://res.cloudinary.com/dztqyanvb/image/upload/v1628071968/mattanpassat-trakok-inspiration_uojend.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628071712/marmor-bankskiva-shaker_eqldyr.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628071304/norrvange-kalksten-platsbyggt-kok_sbgxlz.jpg'
     ]
@@ -182,7 +182,7 @@ export const tapsOptions = [
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487775/Ska%CC%88rmavbild_2021-07-05_kl._14.22.25_pvxirj.png',
     price: 2459,
     category: 'Blandare',
-    /*layerImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628229201/output-onlinepngtools_o95ml5.png',*/
+    layerImg: '',
     backgroundImagesMobile: [
       'https://res.cloudinary.com/dztqyanvb/image/upload/v1628071968/mattanpassat-trakok-inspiration_uojend.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1627975763/Ska%CC%88rmavbild_2021-08-03_kl._09.28.42_jscp77.png', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1627975763/Ska%CC%88rmavbild_2021-08-03_kl._09.28.58_rc9mng.png'
     ]
