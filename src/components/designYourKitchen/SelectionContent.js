@@ -71,6 +71,7 @@ export const Selections = styled.ul`
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 0;
+    color: #444444;
   }
 
   p {

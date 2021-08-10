@@ -4,7 +4,7 @@ import {
   worktopOptions,
   handleOptions,
   tapsOptions
-} from '../components/data/data'
+} from '../components/Data/data'
 
 export const selections = createSlice({
   name: 'selections',
@@ -31,7 +31,7 @@ export const selections = createSlice({
     selectionsDone: false,
     activeDesktopImg: kitchenTypeOptions[0].backgroundImage,
     activeMobileImg: '',
-    currentBackgroundImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625744430/Nordiska-k%C3%B6k-tr%C3%A4k%C3%B6k-inspiration-2000px_rslnew.jpg',
+    currentBackgroundImg: kitchenTypeOptions[0].backgroundImage,
     secondBackgroundImg: '',
     backgroundImgChange: false
   },

@@ -3,12 +3,13 @@ export const kitchenTypeOptions = [
     id: '1',
     name: 'Träkök',
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg',
-    price: 10000,
+    price: 30000,
     category: 'Kökstyp',
     kitchenType: 'Österlen',
     colorSwatch: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486425/Ska%CC%88rmavbild_2021-07-05_kl._13.56.12_a1mlwc.png',
     color: 'Ek',
-    backgroundImage: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg',
+    backgroundImage: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628575335/1_yxrvlu.png',
+    /*backgroundImage: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg',*/
     backgroundImagesMobile: [
       'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
     ]
@@ -17,7 +18,7 @@ export const kitchenTypeOptions = [
     id: '2',
     name: 'Shakerkök',
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745583/platsbyggt-elegant-lantkok_jsqf4v_a3rv68.jpg',
-    price: 20000,
+    price: 40000,
     category: 'Kökstyp',
     kitchenType: 'Ingarö',
     colorSwatch: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486426/Ska%CC%88rmavbild_2021-07-05_kl._13.55.36_zsindr.png',
@@ -31,7 +32,7 @@ export const kitchenTypeOptions = [
     id: '3',
     name: 'Slätt kök',
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745721/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4_iwjwdo.jpg',
-    price: 30000,
+    price: 50000,
     category: 'Kökstyp',
     kitchenType: 'Öland',
     colorSwatch: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486425/Ska%CC%88rmavbild_2021-07-05_kl._13.55.55_fgmnou.png',
@@ -50,7 +51,7 @@ export const worktopOptions = [
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486426/Ska%CC%88rmavbild_2021-07-05_kl._13.55.36_zsindr.png',
     price: 2459,
     category: 'Bänkskiva',
-    layerImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628231330/output-onlinepngtools_2_fq0pir.png',
+    /*layerImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628231330/output-onlinepngtools_2_fq0pir.png',*/
     backgroundImagesMobile: [
       'https://res.cloudinary.com/dztqyanvb/image/upload/v1628072856/mattanpassat-kok-inspiration-2000_axsqaj.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
     ]
@@ -83,6 +84,7 @@ export const worktopOptions = [
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486425/Ska%CC%88rmavbild_2021-07-05_kl._13.56.12_a1mlwc.png',
     price: 8112,
     category: 'Bänkskiva',
+    layerImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628575345/3_voo4sr.png',
     backgroundImagesMobile: [
       'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
     ]
@@ -92,16 +94,6 @@ export const worktopOptions = [
     name: 'Laminate Raia Black',
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486425/Ska%CC%88rmavbild_2021-07-05_kl._13.56.02_azvajw.png',
     price: 8112,
-    category: 'Bänkskiva',
-    backgroundImagesMobile: [
-      'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
-    ]
-  },
-  {
-    id: '12',
-    name: 'Light Oak',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625486425/Ska%CC%88rmavbild_2021-07-05_kl._13.56.06_zple3a.png',
-    price: 5531,
     category: 'Bänkskiva',
     backgroundImagesMobile: [
       'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
@@ -123,7 +115,7 @@ export const handleOptions = [
   {
     id: '14',
     name: 'Handtag metall svart',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487255/Ska%CC%88rmavbild_2021-07-05_kl._14.12.58_dvhbns.png',
+    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628577266/e4c8fcd1-617d-40b1-a535-0963e9b0a491_1_y9ayyd.jpg',
     price: 125,
     category: 'Handtag & knoppar',
     layerImg: '',
@@ -134,7 +126,7 @@ export const handleOptions = [
   {
     id: '15',
     name: 'Handtag metall metall',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487255/Ska%CC%88rmavbild_2021-07-05_kl._14.13.04_k7xbqm.png',
+    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628577266/665dbe7b-aa54-437f-9dd5-fe53795d2254_x1jmb2.jpg',
     price: 125,
     category: 'Handtag & knoppar',
     backgroundImagesMobile: [
@@ -152,39 +144,9 @@ export const handleOptions = [
     ]
   },
   {
-    id: '17',
-    name: 'Boll svart',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487255/Ska%CC%88rmavbild_2021-07-05_kl._14.13.15_ul0nqd.png',
-    price: 125,
-    category: 'Handtag & knoppar',
-    backgroundImagesMobile: [
-      'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
-    ]
-  },
-  {
-    id: '18',
-    name: 'Boll stål',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487255/Ska%CC%88rmavbild_2021-07-05_kl._14.13.21_nbtjm5.png',
-    price: 125,
-    category: 'Handtag & knoppar',
-    backgroundImagesMobile: [
-      'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
-    ]
-  },
-  {
-    id: '19',
-    name: 'Boll guld',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487255/Ska%CC%88rmavbild_2021-07-05_kl._14.13.25_kqv69b.png',
-    price: 125,
-    category: 'Handtag & knoppar',
-    backgroundImagesMobile: [
-      'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
-    ]
-  },
-  {
     id: '20',
     name: 'Rund knopp svart',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487254/Ska%CC%88rmavbild_2021-07-05_kl._14.13.29_ijouif.png',
+    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628577266/f433d154-b98a-4cac-8661-06ecdf1d40d3_zf4pmd.jpg',
     price: 125,
     category: 'Handtag & knoppar',
     backgroundImagesMobile: [
@@ -204,38 +166,8 @@ export const handleOptions = [
   {
     id: '22',
     name: 'Rund knopp Koppar',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487254/Ska%CC%88rmavbild_2021-07-05_kl._14.13.37_kqob6p.png',
+    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628577447/e07f3e62-143d-442a-91f0-36f58536135a_1_w81fji.jpg',
     price: 125,
-    category: 'Handtag & knoppar',
-    backgroundImagesMobile: [
-      'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
-    ]
-  },
-  {
-    id: '23',
-    name: 'Handtag metall svart',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487255/Ska%CC%88rmavbild_2021-07-05_kl._14.12.58_dvhbns.png',
-    price: 125,
-    category: 'Handtag & knoppar',
-    backgroundImagesMobile: [
-      'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
-    ]
-  },
-  {
-    id: '24',
-    name: 'Handtag metall metall',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487255/Ska%CC%88rmavbild_2021-07-05_kl._14.13.04_k7xbqm.png',
-    price: 125,
-    category: 'Handtag & knoppar',
-    backgroundImagesMobile: [
-      'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
-    ]
-  },
-  {
-    id: '25',
-    name: 'Handtag metall gold',
-    img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487255/Ska%CC%88rmavbild_2021-07-05_kl._14.13.08_yrowze.png',
-    price: 98,
     category: 'Handtag & knoppar',
     backgroundImagesMobile: [
       'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
@@ -250,7 +182,7 @@ export const tapsOptions = [
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487775/Ska%CC%88rmavbild_2021-07-05_kl._14.22.25_pvxirj.png',
     price: 2459,
     category: 'Blandare',
-    layerImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628229201/output-onlinepngtools_o95ml5.png',
+    /*layerImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628229201/output-onlinepngtools_o95ml5.png',*/
     backgroundImagesMobile: [
       'https://res.cloudinary.com/dztqyanvb/image/upload/v1628071968/mattanpassat-trakok-inspiration_uojend.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1627975763/Ska%CC%88rmavbild_2021-08-03_kl._09.28.42_jscp77.png', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1627975763/Ska%CC%88rmavbild_2021-08-03_kl._09.28.58_rc9mng.png'
     ]
@@ -271,6 +203,7 @@ export const tapsOptions = [
     img: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625487775/Ska%CC%88rmavbild_2021-07-05_kl._14.22.25_pvxirj.png',
     price: 2459,
     category: 'Blandare',
+    layerImg: 'https://res.cloudinary.com/dztqyanvb/image/upload/v1628575353/2_w08pcq.png',
     backgroundImagesMobile: [
       'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745446/Nordiska-ko%CC%88k-tra%CC%88ko%CC%88k-inspiration-2000px_rslnew_bc7phl.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745186/platsbyggt-elegant-lantkok_jsqf4v.jpg', 'https://res.cloudinary.com/dztqyanvb/image/upload/v1625745204/modernt-k%C3%B6k-p%C3%A5-s%C3%B6dermalm-stockholm_guzbl4.jpg'
     ]

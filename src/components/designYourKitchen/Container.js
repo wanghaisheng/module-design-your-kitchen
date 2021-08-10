@@ -139,7 +139,7 @@ export const Container = () => {
           className={imageChange ? undefined : 'transparent'} />
         <Image src={backgroundImage} className={imageChange ? 'transparent' : undefined} />
         <Image src={worktopLayer} />
-        <Image src={handlesLayer} />
+        {/*<Image src={handlesLayer} /> */}
         <Image src={tapLayer} />
         <TotalPrice>
           <Price>{totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} kr</Price>
